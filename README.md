@@ -18,7 +18,7 @@ Pour la partie du tp2 ce qu'il va être fait est :
 - information de base --> movement et attaque
 
 
-#Créditation
+# Créditation
 
 **Sons**
 
