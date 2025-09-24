@@ -23,12 +23,15 @@ Pour la partie du tp2 ce qu'il va être fait est :
 **Sons**
 
 https://www.kenney.nl/assets/impact-sounds
+
 https://www.kenney.nl/assets/digital-audio
+
 https://www.kenney.nl/assets/sci-fi-sounds
 
 **Personnages**
 
 https://pixfinity.itch.io/sci-fi-warrior  | personnage principale
+
 https://elthen.itch.io/2d-pixel-art-brain-mole-monarch-sprites   | ennemi
 
 **Musique**
