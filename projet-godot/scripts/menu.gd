@@ -18,11 +18,6 @@ func _ready() -> void:
 	panneau_pause.visible = false
 	panneau_instructions.visible = false
 
-	# Connecter les boutons
-	controle_pause.pressed.connect(_on_controle_pause_pressed)
-	button_retour_pause.pressed.connect(_on_button_retour_pressed)
-	button_instructions.pressed.connect(_on_instructions_pressed)
-	button_retour_instructions.pressed.connect(_on_retour_pressed)
 
 func _on_controle_pause_pressed() -> void:
 	# Affiche ou cache le panneau de pause

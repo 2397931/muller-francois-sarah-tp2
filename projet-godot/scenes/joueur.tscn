@@ -34,7 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://dg15ol1ddu3ha" path="res://art/walk_06.png" id="26_6kx20"]
 [ext_resource type="Texture2D" uid="uid://bols1s5wmcpkx" path="res://art/jump_05.png" id="26_osas5"]
 [ext_resource type="Texture2D" uid="uid://pj81mx1v08uw" path="res://art/jump_06.png" id="27_xdn4m"]
-[ext_resource type="Script" path="res://scripts/area_2d.gd" id="28_o4ekx"]
+[ext_resource type="Script" uid="uid://c7oe3gu80lo2n" path="res://scripts/area_2d.gd" id="28_o4ekx"]
 [ext_resource type="AudioStream" uid="uid://bogjry3xlbtdg" path="res://assets/marche_metal.wav" id="36_qqa4o"]
 [ext_resource type="AudioStream" uid="uid://ffoofd3sc50g" path="res://assets/sword.wav" id="37_je2d1"]
 [ext_resource type="AudioStream" uid="uid://cktugh2yl0d81" path="res://assets/cartoon-jump-6462.mp3" id="37_rbtre"]
@@ -216,5 +216,6 @@ volume_db = -18.0
 
 [node name="AudioStreamPlayer2D5" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("40_osas5")
+volume_db = -17.333
 
 [connection signal="body_shape_entered" from="Area2D" to="Area2D" method="_on_body_shape_entered"]

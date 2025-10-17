@@ -33,7 +33,7 @@ func update_health_bar():
 	if health_bar_sprite:
 		health_bar_sprite.frame = max_health - current_health
 
-# Le joueur subit des dégâts
+# Dégâts
 func take_damage(amount):
 	if is_invulnerable or current_health <= 0:
 		return
@@ -62,14 +62,11 @@ func die():
 	set_process(false)
 	set_physics_process(false)
 
-	# Play death animation
 	$AnimatedSprite2D.play("death")
 	death.play()
 	
-	# Wait for the animation to finish
 	await $AnimatedSprite2D.animation_finished
 
-	# Reload the current scene
 	get_tree().reload_current_scene()
 
 
@@ -99,7 +96,7 @@ func _physics_process(delta):
 
 	# animations selon l'état du joueur et son de marche
 	if is_taking_damage:
-		pass  # Ne rien changer, laisser l'animation "damage" jouer
+		pass
 	elif is_attacking:
 		pass
 	elif not is_on_floor():

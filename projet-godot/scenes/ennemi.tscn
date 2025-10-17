@@ -1,8 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://cr5a1i7ip2vf1"]
+[gd_scene load_steps=27 format=3 uid="uid://cr5a1i7ip2vf1"]
 
 [ext_resource type="Script" uid="uid://bwof3g51o3kt1" path="res://scripts/ennemi.gd" id="1_a8sfv"]
 [ext_resource type="Texture2D" uid="uid://cvbjk2tn0wgv7" path="res://art/Brain Mole Monarch Sprite Sheet.png" id="1_i8ure"]
-[ext_resource type="Script" path="res://scripts/area_2d_ennemi.gd" id="3_1ta0d"]
 [ext_resource type="AudioStream" uid="uid://bf4wt8uki1np6" path="res://assets/817009__neolapon__egrunt2.wav" id="4_wutyl"]
 [ext_resource type="AudioStream" uid="uid://cjqf6kxam8pmh" path="res://assets/slime_explosion.wav" id="5_r3twd"]
 
@@ -182,7 +181,6 @@ animation = &"attaque"
 shape = SubResource("CapsuleShape2D_uv0kq")
 
 [node name="DetectionArea" type="Area2D" parent="."]
-script = ExtResource("3_1ta0d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CapsuleShape2D_wutyl")

@@ -19,16 +19,15 @@ var patrol_direction := 0
 var patrol_timer := 0.0
 var attacking_loop_running := false
 
-# Screen bounds
 var min_x := 0
-var max_x := 1024  # Adjust to your game width
+var max_x := 1024
 
 func _ready() -> void:
 	joueur = get_tree().get_first_node_in_group("joueur")
 	$AnimatedSprite2D.play("walk")
 	randomize()
 
-	# Optionally, use viewport width if you want dynamic bounds
+
 	var screen_size = get_viewport_rect().size
 	min_x = 0
 	max_x = screen_size.x
@@ -55,7 +54,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		patrol(delta)
 
-	# Clamp position to stay on screen
 	global_position.x = clamp(global_position.x, min_x, max_x)
 
 func start_attacking_loop():
@@ -113,7 +111,6 @@ func patrol(delta):
 	velocity = Vector2(patrol_direction * speed, 0)
 	move_and_slide()
 
-	# Reverse direction if hitting screen edges
 	if global_position.x <= min_x:
 		patrol_direction = 1
 	elif global_position.x >= max_x:
