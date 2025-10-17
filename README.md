@@ -28,6 +28,12 @@ https://www.kenney.nl/assets/digital-audio
 
 https://www.kenney.nl/assets/sci-fi-sounds
 
+https://freesound.org/people/neolapon/sounds/817009/
+
+https://freesound.org/people/Artninja/sounds/810709/
+
+https://freesound.org/people/DDT197/sounds/445776/
+
 **Personnages**
 
 https://pixfinity.itch.io/sci-fi-warrior  | personnage principale
@@ -39,6 +45,8 @@ https://elthen.itch.io/2d-pixel-art-brain-mole-monarch-sprites   | ennemi
 https://pixabay.com/music/video-games-grim-proceedings-harpsichord-plodding-dance-haunted-addams-148252/
 
 **Assets utilisés**
+
+
 
 
 
