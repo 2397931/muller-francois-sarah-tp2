@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c1dideemsx4hb" path="res://scripts/main.gd" id="1_85g3d"]
 [ext_resource type="PackedScene" uid="uid://m4g0jcl2xmt3" path="res://scenes/map_principale.tscn" id="1_jyhfs"]
-[ext_resource type="VideoStream" uid="uid://b3jc2j6ddrhx5" path="res://assets/arriere_plan.ogv" id="2_a8y0u"]
+[ext_resource type="VideoStream" uid="uid://dwniagr464mqq" path="res://video/arriere_plan.ogv" id="2_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://by1vdpe3n0axv" path="res://scenes/joueur.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://cr5a1i7ip2vf1" path="res://scenes/ennemi.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://c34gecy2ufov0" path="res://scenes/barre_vie.tscn" id="6_tefeu"]
@@ -87,6 +87,7 @@ autoplay = true
 script = ExtResource("11_a8y0u")
 
 [node name="HUD" type="Control" parent="Menu"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
