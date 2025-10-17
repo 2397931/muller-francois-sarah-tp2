@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcwkan2mve30o"]
+
+[ext_resource type="Script" uid="uid://6qlojrumclks" path="res://scripts/instruction.gd" id="1_w5vd1"]
+[ext_resource type="FontFile" uid="uid://kkof7uuxaayk" path="res://fonts/PixelOperator-Bold.ttf" id="2_k4qhh"]
+
+[sub_resource type="Gradient" id="Gradient_w5vd1"]
+colors = PackedColorArray(0.256282, 0.000267005, 0.340747, 1, 0.043273, 0, 0.450357, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qgcx2"]
+gradient = SubResource("Gradient_w5vd1")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m2of6"]
+bg_color = Color(0.204425, 0.00171398, 0.304824, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ww5a2"]
+bg_color = Color(0.307942, 0.00290739, 0.450774, 1)
+
+[node name="Instruction" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_w5vd1")
+
+[node name="background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 398.0
+offset_top = 323.0
+offset_right = 1452.0
+offset_bottom = 951.0
+texture = SubResource("GradientTexture2D_qgcx2")
+expand_mode = 1
+
+[node name="InstructionText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 541.0
+offset_top = 382.0
+offset_right = 1347.0
+offset_bottom = 821.0
+theme_override_fonts/font = ExtResource("2_k4qhh")
+text = "* Utilisez les flèches et A/D pour vous déplacer  
+
+* Appuyez sur Espace et la flèche du haut pour sauter 
+ 
+* Clicquer avec la souris droite pour attaquer  
+
+* Évitez l'ennemi
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="retour" type="Button" parent="."]
+layout_mode = 0
+offset_left = 746.0
+offset_top = 726.0
+offset_right = 1126.0
+offset_bottom = 856.0
+theme_override_fonts/font = ExtResource("2_k4qhh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_m2of6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ww5a2")
+text = "Retour"
+
+[connection signal="pressed" from="retour" to="." method="_on_retour_pressed"]

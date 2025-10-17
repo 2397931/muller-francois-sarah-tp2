@@ -1,0 +1,220 @@
+[gd_scene load_steps=44 format=3 uid="uid://by1vdpe3n0axv"]
+
+[ext_resource type="Script" uid="uid://r158dq5dr6j6" path="res://scripts/joueur.gd" id="1_nuici"]
+[ext_resource type="Texture2D" uid="uid://d1cmfc17udy6k" path="res://art/attaque_00.png" id="1_qpsld"]
+[ext_resource type="Texture2D" uid="uid://bxxtrydmo5gcc" path="res://art/attaque_01.png" id="2_nuici"]
+[ext_resource type="Texture2D" uid="uid://cbktq5f1xmjse" path="res://art/attaque_02.png" id="3_o4ekx"]
+[ext_resource type="Texture2D" uid="uid://brx2mu6r1kr4g" path="res://art/attaque_03.png" id="4_qopr7"]
+[ext_resource type="Texture2D" uid="uid://c3d2felv1kgr3" path="res://art/attaque_04.png" id="5_os0da"]
+[ext_resource type="Texture2D" uid="uid://dqiu0d7ct82cp" path="res://art/attaque_05.png" id="6_03608"]
+[ext_resource type="Texture2D" uid="uid://chkaimky4vqp5" path="res://art/attaque_06.png" id="7_qwaoc"]
+[ext_resource type="Texture2D" uid="uid://c6ia5huedk4j7" path="res://art/damage_00.png" id="8_gwjl5"]
+[ext_resource type="Texture2D" uid="uid://1cj7ntwyfq1n" path="res://art/damage_01.png" id="9_j8gsg"]
+[ext_resource type="Texture2D" uid="uid://bi5b2x1pgewku" path="res://art/damage_02.png" id="10_0yx1u"]
+[ext_resource type="Texture2D" uid="uid://b73a8je4li3mf" path="res://art/death_00.png" id="11_qyjd1"]
+[ext_resource type="Texture2D" uid="uid://dyp8x0thbffky" path="res://art/death_01.png" id="12_je2d1"]
+[ext_resource type="Texture2D" uid="uid://deh3xmriblm3r" path="res://art/death_02.png" id="13_qqa4o"]
+[ext_resource type="Texture2D" uid="uid://b1k1k7tdaum1l" path="res://art/death_03.png" id="14_rbtre"]
+[ext_resource type="Texture2D" uid="uid://6mbvydgo1ryi" path="res://art/death_04.png" id="15_osas5"]
+[ext_resource type="Texture2D" uid="uid://d1qwp6lmvw3vo" path="res://art/idle_00.png" id="16_xdn4m"]
+[ext_resource type="Texture2D" uid="uid://dxcvoegqdgiiq" path="res://art/idle_01.png" id="17_38sxg"]
+[ext_resource type="Texture2D" uid="uid://bcgsluf0gxaaj" path="res://art/idle_02.png" id="18_3cbyy"]
+[ext_resource type="Texture2D" uid="uid://wh75w03hf8o7" path="res://art/idle_03.png" id="19_ht11b"]
+[ext_resource type="Texture2D" uid="uid://ou5krobqaifq" path="res://art/walk_00.png" id="20_y6yf3"]
+[ext_resource type="Texture2D" uid="uid://j1rgjlh0yfxs" path="res://art/jump_00.png" id="21_0yx1u"]
+[ext_resource type="Texture2D" uid="uid://bhvukfcum7qeb" path="res://art/walk_01.png" id="21_r0l8x"]
+[ext_resource type="Texture2D" uid="uid://drmu2phqp47ff" path="res://art/walk_02.png" id="22_bbfnf"]
+[ext_resource type="Texture2D" uid="uid://d001abqm4sglo" path="res://art/jump_01.png" id="22_qyjd1"]
+[ext_resource type="Texture2D" uid="uid://bx5c0waesmnpk" path="res://art/jump_02.png" id="23_je2d1"]
+[ext_resource type="Texture2D" uid="uid://dwhl251gt0702" path="res://art/walk_03.png" id="23_t71nr"]
+[ext_resource type="Texture2D" uid="uid://dpssr4rluvf5d" path="res://art/jump_03.png" id="24_qqa4o"]
+[ext_resource type="Texture2D" uid="uid://x8trt7etrp7w" path="res://art/walk_04.png" id="24_y57is"]
+[ext_resource type="Texture2D" uid="uid://legcnct55uji" path="res://art/jump_04.png" id="25_rbtre"]
+[ext_resource type="Texture2D" uid="uid://d4khnq86atmj6" path="res://art/walk_05.png" id="25_yv6ha"]
+[ext_resource type="Texture2D" uid="uid://dg15ol1ddu3ha" path="res://art/walk_06.png" id="26_6kx20"]
+[ext_resource type="Texture2D" uid="uid://bols1s5wmcpkx" path="res://art/jump_05.png" id="26_osas5"]
+[ext_resource type="Texture2D" uid="uid://pj81mx1v08uw" path="res://art/jump_06.png" id="27_xdn4m"]
+[ext_resource type="Script" path="res://scripts/area_2d.gd" id="28_o4ekx"]
+[ext_resource type="AudioStream" uid="uid://bogjry3xlbtdg" path="res://assets/marche_metal.wav" id="36_qqa4o"]
+[ext_resource type="AudioStream" uid="uid://ffoofd3sc50g" path="res://assets/sword.wav" id="37_je2d1"]
+[ext_resource type="AudioStream" uid="uid://cktugh2yl0d81" path="res://assets/cartoon-jump-6462.mp3" id="37_rbtre"]
+[ext_resource type="AudioStream" uid="uid://de46itrl2uvql" path="res://assets/slap-hurt-pain-sound-effect-262618.mp3" id="39_rbtre"]
+[ext_resource type="AudioStream" uid="uid://dxeudfitgxj83" path="res://assets/dramatic-death-collapse-352720.mp3" id="40_osas5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nuici"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qpsld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_nuici")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o4ekx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qopr7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_os0da")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_03608")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qwaoc")
+}],
+"loop": false,
+"name": &"attaque",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_gwjl5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_j8gsg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0yx1u")
+}],
+"loop": false,
+"name": &"damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_qyjd1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_je2d1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_qqa4o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_rbtre")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_osas5")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_xdn4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_38sxg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_3cbyy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ht11b")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_0yx1u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_qyjd1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_je2d1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_qqa4o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_rbtre")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_osas5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_xdn4m")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_y6yf3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_r0l8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_bbfnf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_t71nr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_y57is")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_yv6ha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_6kx20")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o4ekx"]
+radius = 14.0
+height = 34.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qopr7"]
+radius = 23.5
+height = 47.0
+
+[node name="joueur" type="CharacterBody2D" groups=["joueur"]]
+scale = Vector2(2, 2)
+script = ExtResource("1_nuici")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nuici")
+animation = &"attaque"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_o4ekx")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("28_o4ekx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_qopr7")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("36_qqa4o")
+volume_db = 9.905
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("37_rbtre")
+volume_db = -19.81
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("37_je2d1")
+
+[node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("39_rbtre")
+volume_db = -18.0
+
+[node name="AudioStreamPlayer2D5" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("40_osas5")
+
+[connection signal="body_shape_entered" from="Area2D" to="Area2D" method="_on_body_shape_entered"]
