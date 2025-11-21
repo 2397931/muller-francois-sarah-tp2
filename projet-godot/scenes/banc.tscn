@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://b8e17fdluxtfr"]
+
+[ext_resource type="Texture2D" uid="uid://bhjutrrx3pkf2" path="res://assets/energy_bench_anim.png" id="1_sjk87"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76oqa"]
+atlas = ExtResource("1_sjk87")
+region = Rect2(0, 128, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1do6u"]
+atlas = ExtResource("1_sjk87")
+region = Rect2(0, 112, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ott24"]
+atlas = ExtResource("1_sjk87")
+region = Rect2(0, 96, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4awac"]
+atlas = ExtResource("1_sjk87")
+region = Rect2(0, 80, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0ixp"]
+atlas = ExtResource("1_sjk87")
+region = Rect2(0, 64, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_loksj"]
+atlas = ExtResource("1_sjk87")
+region = Rect2(0, 48, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nh6m"]
+atlas = ExtResource("1_sjk87")
+region = Rect2(0, 32, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulbh3"]
+atlas = ExtResource("1_sjk87")
+region = Rect2(0, 16, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsu6j"]
+atlas = ExtResource("1_sjk87")
+region = Rect2(0, 0, 48, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yfy6k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76oqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1do6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ott24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4awac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0ixp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_loksj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nh6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulbh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsu6j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="banc" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yfy6k")
+frame = 5
+frame_progress = 0.167343
