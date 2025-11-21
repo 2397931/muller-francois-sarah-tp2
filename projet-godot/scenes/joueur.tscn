@@ -35,11 +35,11 @@
 [ext_resource type="Texture2D" uid="uid://bols1s5wmcpkx" path="res://art/jump_05.png" id="26_osas5"]
 [ext_resource type="Texture2D" uid="uid://pj81mx1v08uw" path="res://art/jump_06.png" id="27_xdn4m"]
 [ext_resource type="Script" uid="uid://c7oe3gu80lo2n" path="res://scripts/area_2d.gd" id="28_o4ekx"]
-[ext_resource type="AudioStream" uid="uid://bogjry3xlbtdg" path="res://assets/marche_metal.wav" id="36_qqa4o"]
-[ext_resource type="AudioStream" uid="uid://ffoofd3sc50g" path="res://assets/sword.wav" id="37_je2d1"]
-[ext_resource type="AudioStream" uid="uid://cktugh2yl0d81" path="res://assets/cartoon-jump-6462.mp3" id="37_rbtre"]
-[ext_resource type="AudioStream" uid="uid://de46itrl2uvql" path="res://assets/slap-hurt-pain-sound-effect-262618.mp3" id="39_rbtre"]
-[ext_resource type="AudioStream" uid="uid://dxeudfitgxj83" path="res://assets/dramatic-death-collapse-352720.mp3" id="40_osas5"]
+[ext_resource type="AudioStream" uid="uid://ch8pobabhvrcp" path="res://audio/marche_metal.wav" id="36_qqa4o"]
+[ext_resource type="AudioStream" uid="uid://bhvgqbpaldc5i" path="res://audio/sword.wav" id="37_je2d1"]
+[ext_resource type="AudioStream" uid="uid://ddfrb0s2kb8p3" path="res://audio/cartoon-jump-6462.mp3" id="37_rbtre"]
+[ext_resource type="AudioStream" uid="uid://cqb13hn70aooq" path="res://audio/slap-hurt-pain-sound-effect-262618.mp3" id="39_rbtre"]
+[ext_resource type="AudioStream" uid="uid://dttja3ie2bs5f" path="res://audio/dramatic-death-collapse-352720.mp3" id="40_osas5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nuici"]
 animations = [{
