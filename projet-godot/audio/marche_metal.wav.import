@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://bogjry3xlbtdg"
-path="res://.godot/imported/marche_metal.wav-f651ed54ce3e91d4e6a9e6ba9f3bd088.sample"
+uid="uid://ch8pobabhvrcp"
+path="res://.godot/imported/marche_metal.wav-2eb82681865fdc2490ce75880eba9848.sample"
 
 [deps]
 
-source_file="res://assets/marche_metal.wav"
-dest_files=["res://.godot/imported/marche_metal.wav-f651ed54ce3e91d4e6a9e6ba9f3bd088.sample"]
+source_file="res://audio/marche_metal.wav"
+dest_files=["res://.godot/imported/marche_metal.wav-2eb82681865fdc2490ce75880eba9848.sample"]
 
 [params]
 

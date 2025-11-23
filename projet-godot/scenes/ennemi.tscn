@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bwof3g51o3kt1" path="res://scripts/ennemi.gd" id="1_a8sfv"]
 [ext_resource type="Texture2D" uid="uid://cvbjk2tn0wgv7" path="res://art/Brain Mole Monarch Sprite Sheet.png" id="1_i8ure"]
-[ext_resource type="AudioStream" uid="uid://bf4wt8uki1np6" path="res://assets/817009__neolapon__egrunt2.wav" id="4_wutyl"]
-[ext_resource type="AudioStream" uid="uid://cjqf6kxam8pmh" path="res://assets/slime_explosion.wav" id="5_r3twd"]
+[ext_resource type="AudioStream" uid="uid://n7v7vyoltswi" path="res://audio/817009__neolapon__egrunt2.wav" id="4_wutyl"]
+[ext_resource type="AudioStream" uid="uid://l1ivj23kth1g" path="res://audio/slime_explosion.wav" id="5_r3twd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ta0d"]
 atlas = ExtResource("1_i8ure")
