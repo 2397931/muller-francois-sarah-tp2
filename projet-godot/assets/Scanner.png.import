@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dji8nsia6ooro"
-path="res://.godot/imported/menu.png-44ee812e6006ace0b2703d300d0096d0.ctex"
+uid="uid://c3uvrfhe5elwb"
+path="res://.godot/imported/Scanner.png-4e7c42d5722aef7be07253f36c6e5774.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icons/menu.png"
-dest_files=["res://.godot/imported/menu.png-44ee812e6006ace0b2703d300d0096d0.ctex"]
+source_file="res://assets/Scanner.png"
+dest_files=["res://.godot/imported/Scanner.png-4e7c42d5722aef7be07253f36c6e5774.ctex"]
 
 [params]
 

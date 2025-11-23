@@ -1,10 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://boxe42bod85e5"]
+[gd_scene load_steps=19 format=3 uid="uid://boxe42bod85e5"]
 
 [ext_resource type="Script" uid="uid://c1dideemsx4hb" path="res://scripts/main.gd" id="1_85g3d"]
 [ext_resource type="PackedScene" uid="uid://m4g0jcl2xmt3" path="res://scenes/map_principale.tscn" id="1_jyhfs"]
 [ext_resource type="VideoStream" uid="uid://dwniagr464mqq" path="res://video/arriere_plan.ogv" id="2_a8y0u"]
-[ext_resource type="PackedScene" uid="uid://by1vdpe3n0axv" path="res://scenes/joueur.tscn" id="2_sugp2"]
-[ext_resource type="PackedScene" uid="uid://cr5a1i7ip2vf1" path="res://scenes/ennemi.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://c34gecy2ufov0" path="res://scenes/barre_vie.tscn" id="6_tefeu"]
 [ext_resource type="Script" uid="uid://bgbx1wy6gm35i" path="res://scripts/barre_vie.gd" id="7_o6xl0"]
 [ext_resource type="AudioStream" uid="uid://cthev4yqi2htj" path="res://audio/unidentified-208890.mp3" id="9_choun"]
@@ -14,10 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://cgdihikwnspsi" path="res://icons/menu (3).png" id="11_ya4ey"]
 [ext_resource type="AudioStream" uid="uid://qdirw4f5xmai" path="res://audio/switch_005.ogg" id="13_a8y0u"]
 [ext_resource type="AudioStream" uid="uid://1exsgtm7mfav" path="res://audio/minimize_008.ogg" id="14_jkv2x"]
+<<<<<<< HEAD
 
 [sub_resource type="GDScript" id="GDScript_eb6dy"]
 script/source = "extends Camera2D
 "
+=======
+>>>>>>> b78e705f2abc77bfa4f2473080262505f7f04f9e
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8y0u"]
 bg_color = Color(0.204425, 0.00171398, 0.304824, 1)
@@ -25,11 +26,11 @@ bg_color = Color(0.204425, 0.00171398, 0.304824, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jkv2x"]
 bg_color = Color(0.307942, 0.00290739, 0.450774, 1)
 
-[sub_resource type="Gradient" id="Gradient_trceg"]
+[sub_resource type="Gradient" id="Gradient_eb6dy"]
 colors = PackedColorArray(0.256282, 0.000267005, 0.340747, 1, 0.043273, 0, 0.450357, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_a8y0u"]
-gradient = SubResource("Gradient_trceg")
+gradient = SubResource("Gradient_eb6dy")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jbj1t"]
 bg_color = Color(0.204425, 0.00171398, 0.304824, 1)
@@ -50,21 +51,6 @@ loop = true
 metadata/_edit_use_anchors_ = true
 
 [node name="map_principale" parent="." instance=ExtResource("1_jyhfs")]
-
-[node name="ennemi" parent="." instance=ExtResource("4_jyhfs")]
-position = Vector2(687, 912)
-
-[node name="joueur" parent="." instance=ExtResource("2_sugp2")]
-position = Vector2(84, 912)
-
-[node name="Camera2D" type="Camera2D" parent="joueur"]
-zoom = Vector2(2, 2)
-limit_left = 0
-limit_top = 0
-limit_right = 1920
-limit_bottom = 1080
-limit_smoothed = true
-script = SubResource("GDScript_eb6dy")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

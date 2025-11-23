@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://cqv3dm1ayhu26"]
+
+[ext_resource type="Texture2D" uid="uid://bxg343hmc5jhv" path="res://assets/WaterTankOne.png" id="1_qrxud"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4xvs"]
+atlas = ExtResource("1_qrxud")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01nm4"]
+atlas = ExtResource("1_qrxud")
+region = Rect2(0, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4vtj"]
+atlas = ExtResource("1_qrxud")
+region = Rect2(0, 96, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lj6hj"]
+atlas = ExtResource("1_qrxud")
+region = Rect2(0, 144, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ixom"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4xvs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01nm4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4vtj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lj6hj")
+}],
+"loop": true,
+"name": &"tank",
+"speed": 5.0
+}]
+
+[node name="tank" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1ixom")
+animation = &"tank"
+frame_progress = 0.387377
