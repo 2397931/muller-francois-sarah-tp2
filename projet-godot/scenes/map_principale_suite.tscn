@@ -1398,7 +1398,7 @@ animation = &"door"
 position = Vector2(1081, 913)
 
 [node name="joueur" parent="." instance=ExtResource("13_1uq11")]
-position = Vector2(526, 913)
+position = Vector2(78, 913)
 
 [node name="Camera2D" type="Camera2D" parent="joueur"]
 zoom = Vector2(2, 2)

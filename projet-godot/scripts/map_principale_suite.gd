@@ -2,6 +2,12 @@ extends Node2D
 
 func _ready() -> void:
 	global.current_scene = "map_principale_suite"
+	if global.game_first_loadin == true:
+		$joueur.position.x = global.joueur_start2_posx
+		$joueur.position.y = global.joueur_start2_posy
+	else:
+		$joueur.position.x = global.joueur_exit_infirmerie_posx
+		$joueur.position.y = global.joueur_exit_infirmerie_posy
 
 func _process(delta: float) -> void:
 	change_scene()

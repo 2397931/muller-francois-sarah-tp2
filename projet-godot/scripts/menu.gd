@@ -22,7 +22,8 @@ func pauser() -> void:
 	$PauseMenu.show()
 	entrer.play()
 	get_tree().paused = true
-	$PauseMenu/ShowInstructionsButton.grab_focus.call_deferred()
+	$PauseMenu/ShowInstructions.grab_focus.call_deferred()
+
 
 func continuer() -> void:
 	print("PLAY MODE")
@@ -37,7 +38,7 @@ func _on_continue_button_pressed() -> void:
 
 func _on_close_button_pressed() -> void:
 	%InstructionsScreen.hide()
-	$PauseMenu/ShowInstructionsButton.grab_focus.call_deferred()
+	$PauseMenu/ShowInstructions.grab_focus.call_deferred()
 	sortir.play()
 
 func _on_show_instructions_pressed() -> void:

@@ -30,6 +30,7 @@ bg_color = Color(0.204425, 0.00171398, 0.304824, 1)
 script = ExtResource("1_con2f")
 
 [node name="PauseMenu" type="Panel" parent="."]
+process_mode = 2
 visible = false
 offset_left = 608.0
 offset_top = 277.0
@@ -49,6 +50,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_v86rl")
 text = "Instructions"
 
 [node name="ContinueButton" type="Button" parent="PauseMenu"]
+process_mode = 2
 layout_mode = 0
 offset_left = 277.0
 offset_top = 308.0
@@ -61,6 +63,7 @@ text = "Retour"
 
 [node name="InstructionsScreen" type="Panel" parent="."]
 unique_name_in_owner = true
+process_mode = 2
 visible = false
 offset_left = 608.0
 offset_top = 277.0
@@ -70,6 +73,7 @@ theme = SubResource("Theme_v86rl")
 theme_override_styles/panel = SubResource("StyleBoxTexture_13sgg")
 
 [node name="CloseButton" type="Button" parent="InstructionsScreen"]
+process_mode = 2
 layout_mode = 0
 offset_left = 748.0
 offset_top = 9.0
@@ -102,6 +106,7 @@ offset_left = 1828.0
 offset_top = 21.0
 offset_right = 1900.0
 offset_bottom = 93.0
+toggle_mode = true
 icon = ExtResource("2_mhnvy")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
