@@ -1,13 +1,42 @@
-[gd_scene load_steps=9 format=3 uid="uid://boxe42bod85e5"]
+[gd_scene load_steps=19 format=3 uid="uid://boxe42bod85e5"]
 
 [ext_resource type="Script" uid="uid://c1dideemsx4hb" path="res://scripts/main.gd" id="1_85g3d"]
 [ext_resource type="PackedScene" uid="uid://m4g0jcl2xmt3" path="res://scenes/map_principale.tscn" id="1_jyhfs"]
 [ext_resource type="VideoStream" uid="uid://dwniagr464mqq" path="res://video/arriere_plan.ogv" id="2_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://c34gecy2ufov0" path="res://scenes/barre_vie.tscn" id="6_tefeu"]
 [ext_resource type="Script" uid="uid://bgbx1wy6gm35i" path="res://scripts/barre_vie.gd" id="7_o6xl0"]
-[ext_resource type="PackedScene" uid="uid://cvi8lhd68bq0p" path="res://scenes/menu.tscn" id="8_tipki"]
 [ext_resource type="AudioStream" uid="uid://cthev4yqi2htj" path="res://audio/unidentified-208890.mp3" id="9_choun"]
 [ext_resource type="AudioStream" uid="uid://bi4eox6skjrj0" path="res://audio/space-travellinx27-low-rumble-295793.mp3" id="10_choun"]
+[ext_resource type="Script" uid="uid://dq6vn14n2teag" path="res://scripts/menu.gd" id="11_a8y0u"]
+[ext_resource type="FontFile" uid="uid://kkof7uuxaayk" path="res://fonts/PixelOperator-Bold.ttf" id="11_trceg"]
+[ext_resource type="Texture2D" uid="uid://cgdihikwnspsi" path="res://icons/menu (3).png" id="11_ya4ey"]
+[ext_resource type="AudioStream" uid="uid://qdirw4f5xmai" path="res://audio/switch_005.ogg" id="13_a8y0u"]
+[ext_resource type="AudioStream" uid="uid://1exsgtm7mfav" path="res://audio/minimize_008.ogg" id="14_jkv2x"]
+<<<<<<< HEAD
+
+[sub_resource type="GDScript" id="GDScript_eb6dy"]
+script/source = "extends Camera2D
+"
+=======
+>>>>>>> b78e705f2abc77bfa4f2473080262505f7f04f9e
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8y0u"]
+bg_color = Color(0.204425, 0.00171398, 0.304824, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jkv2x"]
+bg_color = Color(0.307942, 0.00290739, 0.450774, 1)
+
+[sub_resource type="Gradient" id="Gradient_eb6dy"]
+colors = PackedColorArray(0.256282, 0.000267005, 0.340747, 1, 0.043273, 0, 0.450357, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a8y0u"]
+gradient = SubResource("Gradient_eb6dy")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jbj1t"]
+bg_color = Color(0.204425, 0.00171398, 0.304824, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_muem4"]
+bg_color = Color(0.307942, 0.00290739, 0.450774, 1)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_85g3d")
@@ -40,4 +69,106 @@ stream = ExtResource("10_choun")
 volume_db = -30.0
 autoplay = true
 
-[node name="menu" parent="." instance=ExtResource("8_tipki")]
+[node name="Menu" type="CanvasLayer" parent="."]
+script = ExtResource("11_a8y0u")
+
+[node name="HUD" type="Control" parent="Menu"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ControlePause" type="Button" parent="Menu/HUD"]
+layout_mode = 0
+offset_left = 1809.0
+offset_top = 34.0
+offset_right = 1881.0
+offset_bottom = 106.0
+theme_override_icons/icon = ExtResource("11_ya4ey")
+
+[node name="PanneauPause" type="Panel" parent="Menu/HUD/ControlePause"]
+layout_mode = 0
+offset_left = -1201.0
+offset_top = 243.0
+offset_right = -370.0
+offset_bottom = 757.0
+
+[node name="ButtonRetour" type="Button" parent="Menu/HUD/ControlePause/PanneauPause"]
+layout_mode = 0
+offset_left = 271.0
+offset_top = 132.0
+offset_right = 578.0
+offset_bottom = 238.0
+theme_override_fonts/font = ExtResource("11_trceg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a8y0u")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jkv2x")
+text = "Retour"
+
+[node name="ButtonInstructions" type="Button" parent="Menu/HUD/ControlePause/PanneauPause"]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 318.0
+offset_right = 582.0
+offset_bottom = 424.0
+theme_override_fonts/font = ExtResource("11_trceg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a8y0u")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jkv2x")
+text = "Instructions"
+
+[node name="PanneauInstructions" type="Panel" parent="Menu/HUD/ControlePause"]
+layout_mode = 0
+offset_left = -1201.0
+offset_top = 243.0
+offset_right = -370.0
+offset_bottom = 757.0
+
+[node name="background" type="TextureRect" parent="Menu/HUD/ControlePause/PanneauInstructions"]
+layout_mode = 0
+offset_left = -42.0
+offset_top = -9.0
+offset_right = 856.0
+offset_bottom = 508.0
+texture = SubResource("GradientTexture2D_a8y0u")
+expand_mode = 1
+
+[node name="InstructionText" type="Label" parent="Menu/HUD/ControlePause/PanneauInstructions"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -8.0
+offset_right = 811.0
+offset_bottom = 431.0
+theme_override_fonts/font = ExtResource("11_trceg")
+text = "* Utilisez les flèches et A/D pour vous déplacer  
+
+* Appuyez sur Espace et la flèche du haut pour sauter 
+ 
+* Clicquer avec la souris droite pour attaquer  
+
+* Évitez l'ennemi
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="retour" type="Button" parent="Menu/HUD/ControlePause/PanneauInstructions"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 310.0
+offset_right = 604.0
+offset_bottom = 440.0
+theme_override_fonts/font = ExtResource("11_trceg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jbj1t")
+theme_override_styles/normal = SubResource("StyleBoxFlat_muem4")
+text = "Retour"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_a8y0u")
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_jkv2x")
+
+[connection signal="pressed" from="Menu/HUD/ControlePause" to="Menu" method="_on_controle_pause_pressed"]
+[connection signal="pressed" from="Menu/HUD/ControlePause/PanneauPause/ButtonRetour" to="Menu" method="_on_button_retour_pressed"]
+[connection signal="pressed" from="Menu/HUD/ControlePause/PanneauPause/ButtonInstructions" to="Menu" method="_on_instructions_pressed"]
+[connection signal="pressed" from="Menu/HUD/ControlePause/PanneauInstructions/retour" to="Menu" method="_on_retour_pressed"]
