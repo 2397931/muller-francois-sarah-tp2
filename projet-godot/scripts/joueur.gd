@@ -1,39 +1,52 @@
 extends CharacterBody2D
 
+class_name Joueur
+
 @export var speed := 400
 @export var jump_force := -500
 @export var gravity := 1200
 @export var max_health := 6
 @export var damage_per_hit := 1
-@export var invulnerability_time := 0.5  # Temps d'invincibilité après un coup
+@export var invulnerability_time := 0.8   # Increased so enemies can't spam you
+
 @onready var marche_metal = $AudioStreamPlayer2D
 @onready var son_saut = $AudioStreamPlayer2D2
 @onready var sword = $AudioStreamPlayer2D3
 @onready var hurt = $AudioStreamPlayer2D4
 @onready var death = $AudioStreamPlayer2D5
 
-# On cible directement l'AnimatedSprite2D à l'intérieur de barre_vie
+var cam : Camera2D
 @onready var health_bar_sprite: AnimatedSprite2D = get_node("/root/main/HUD/barre_vie/AnimatedSprite2D")
 
 var current_health := max_health
 var is_invulnerable := false
 var is_taking_damage := false
 var is_walking_sound_playing := false
-
-var screen_size : Vector2
 var is_attacking := false
+var screen_size : Vector2
 
 func _ready() -> void:
+	cam = $Camera2D
 	screen_size = get_viewport_rect().size
 	$AnimatedSprite2D.play("idle")
 	update_health_bar()
+	
+	# Respawn at checkpoint if it exists
+	#if CheckpointManager.last_location != Vector2.ZERO:
+		#global_position = CheckpointManager.last_location
 
-# Met à jour la barre de vie en fonction de la santé actuelle
+	is_invulnerable = true
+	await get_tree().create_timer(1.0).timeout
+	is_invulnerable = false
+
+
 func update_health_bar():
 	if health_bar_sprite:
 		health_bar_sprite.frame = max_health - current_health
 
-# Dégâts
+func player():
+	pass
+
 func take_damage(amount):
 	if is_invulnerable or current_health <= 0:
 		return
@@ -42,6 +55,12 @@ func take_damage(amount):
 	current_health = clamp(current_health, 0, max_health)
 
 	print("Player took damage! Health =", current_health)
+
+	# ----- NEW: knockback -----
+	var enemy = get_tree().get_first_node_in_group("ennemi")
+	if enemy:
+		var dir = sign(global_position.x - enemy.global_position.x)
+		velocity = Vector2(dir * 200, -150)
 
 	$AnimatedSprite2D.play("damage")
 	update_health_bar()
@@ -56,23 +75,19 @@ func take_damage(amount):
 	if current_health <= 0:
 		die()
 
-# Le joueur meurt
+
 func die():
-	# Stop input and movement
 	set_process(false)
 	set_physics_process(false)
 
 	$AnimatedSprite2D.play("death")
 	death.play()
-	
-	await $AnimatedSprite2D.animation_finished
 
+	await $AnimatedSprite2D.animation_finished
 	get_tree().reload_current_scene()
 
 
-
 func _physics_process(delta):
-	# Déplacement horizontal
 	if Input.is_action_pressed("move_right"):
 		velocity.x = speed
 	elif Input.is_action_pressed("move_left"):
@@ -80,7 +95,6 @@ func _physics_process(delta):
 	else:
 		velocity.x = 0
 
-	# Gravité et saut
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	else:
@@ -90,11 +104,10 @@ func _physics_process(delta):
 				$AnimatedSprite2D.play("jump")
 				son_saut.play()
 
-	# Orientation du sprite
 	if velocity.x != 0:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 
-	# animations selon l'état du joueur et son de marche
+	# animations
 	if is_taking_damage:
 		pass
 	elif is_attacking:
@@ -114,19 +127,22 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-	# Empêche le joueur de sortir de l'écran
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
+	if cam:
+		position.x = clamp(position.x, cam.limit_left, cam.limit_right)
+		position.y = clamp(position.y, cam.limit_top, cam.limit_bottom)
 
-	# Attaque du joueur
+	# ----- Attack -----
 	if Input.is_action_just_pressed("attaque_joueur"):
 		attaque()
 		sword.play()
 
-# Fonction d'attaque
+
 func attaque():
 	is_attacking = true
 	$AnimatedSprite2D.play("attaque")
+
+	# ----- NEW: attack active frame -----
+	await get_tree().create_timer(0.15).timeout
 
 	var bodies = $Area2D.get_overlapping_bodies()
 	for body in bodies:

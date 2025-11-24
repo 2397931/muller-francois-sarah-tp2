@@ -34,7 +34,6 @@
 [ext_resource type="Texture2D" uid="uid://dg15ol1ddu3ha" path="res://art/walk_06.png" id="26_6kx20"]
 [ext_resource type="Texture2D" uid="uid://bols1s5wmcpkx" path="res://art/jump_05.png" id="26_osas5"]
 [ext_resource type="Texture2D" uid="uid://pj81mx1v08uw" path="res://art/jump_06.png" id="27_xdn4m"]
-[ext_resource type="Script" uid="uid://c7oe3gu80lo2n" path="res://scripts/area_2d.gd" id="28_o4ekx"]
 [ext_resource type="AudioStream" uid="uid://ch8pobabhvrcp" path="res://audio/marche_metal.wav" id="36_qqa4o"]
 [ext_resource type="AudioStream" uid="uid://bhvgqbpaldc5i" path="res://audio/sword.wav" id="37_je2d1"]
 [ext_resource type="AudioStream" uid="uid://ddfrb0s2kb8p3" path="res://audio/cartoon-jump-6462.mp3" id="37_rbtre"]
@@ -177,6 +176,17 @@ animations = [{
 radius = 14.0
 height = 34.0
 
+[sub_resource type="GDScript" id="GDScript_rbtre"]
+script/source = "extends Area2D
+
+signal hit
+
+func _on_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
+	if body.is_in_group(\"ennemi\"):
+		hide()
+		hit.emit()
+"
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qopr7"]
 radius = 23.5
 height = 47.0
@@ -195,7 +205,7 @@ animation = &"attaque"
 shape = SubResource("CapsuleShape2D_o4ekx")
 
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("28_o4ekx")
+script = SubResource("GDScript_rbtre")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CapsuleShape2D_qopr7")

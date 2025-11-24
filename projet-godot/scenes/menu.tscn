@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://cvi8lhd68bq0p"]
 
-[ext_resource type="Script" uid="uid://dq6vn14n2teag" path="res://scripts/menu.gd" id="1_con2f"]
+[ext_resource type="Script" uid="uid://b17vqdw21k2s4" path="res://scripts/menu.gd" id="1_con2f"]
 [ext_resource type="Texture2D" uid="uid://or8l7uk6vnqj" path="res://assets/ombre-gradient-backgroun.jpg" id="2_4ytvr"]
 [ext_resource type="Texture2D" uid="uid://cgdihikwnspsi" path="res://icons/menu (3).png" id="2_mhnvy"]
 [ext_resource type="FontFile" uid="uid://kkof7uuxaayk" path="res://fonts/PixelOperator-Bold.ttf" id="3_4ytvr"]
@@ -29,7 +29,7 @@ bg_color = Color(0.204425, 0.00171398, 0.304824, 1)
 [node name="menu" type="CanvasLayer"]
 script = ExtResource("1_con2f")
 
-[node name="PanneauPause" type="Panel" parent="."]
+[node name="PauseMenu" type="Panel" parent="."]
 visible = false
 offset_left = 608.0
 offset_top = 277.0
@@ -37,18 +37,7 @@ offset_right = 1439.0
 offset_bottom = 791.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_g3eks")
 
-[node name="ContinueButton" type="Button" parent="PanneauPause"]
-layout_mode = 0
-offset_left = 277.0
-offset_top = 308.0
-offset_right = 584.0
-offset_bottom = 414.0
-theme_override_fonts/font = ExtResource("3_4ytvr")
-theme_override_styles/hover = SubResource("StyleBoxFlat_g3eks")
-theme_override_styles/normal = SubResource("StyleBoxFlat_v86rl")
-text = "Retour"
-
-[node name="ShowInstruction" type="Button" parent="PanneauPause"]
+[node name="ShowInstructions" type="Button" parent="PauseMenu"]
 layout_mode = 0
 offset_left = 278.0
 offset_top = 116.0
@@ -59,8 +48,20 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_g3eks")
 theme_override_styles/normal = SubResource("StyleBoxFlat_v86rl")
 text = "Instructions"
 
+[node name="ContinueButton" type="Button" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 277.0
+offset_top = 308.0
+offset_right = 584.0
+offset_bottom = 414.0
+theme_override_fonts/font = ExtResource("3_4ytvr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_g3eks")
+theme_override_styles/normal = SubResource("StyleBoxFlat_v86rl")
+text = "Retour"
+
 [node name="InstructionsScreen" type="Panel" parent="."]
 unique_name_in_owner = true
+visible = false
 offset_left = 608.0
 offset_top = 277.0
 offset_right = 1439.0
@@ -115,7 +116,7 @@ volume_db = -8.0
 stream = ExtResource("8_70i5f")
 volume_db = -12.0
 
-[connection signal="pressed" from="PanneauPause/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="PanneauPause/ShowInstruction" to="." method="_on_show_instruction_pressed"]
+[connection signal="pressed" from="PauseMenu/ShowInstructions" to="." method="_on_show_instructions_pressed"]
+[connection signal="pressed" from="PauseMenu/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="InstructionsScreen/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="toggled" from="PauseButton" to="." method="_on_pause_button_toggled"]

@@ -40,8 +40,7 @@ func _on_close_button_pressed() -> void:
 	$PauseMenu/ShowInstructionsButton.grab_focus.call_deferred()
 	sortir.play()
 
-
-func _on_show_instruction_pressed() -> void:
+func _on_show_instructions_pressed() -> void:
 	%InstructionsScreen.show()
 	%InstructionsScreen/CloseButton.grab_focus.call_deferred()
 	entrer.play()
