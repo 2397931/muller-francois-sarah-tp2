@@ -17,10 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+global="*res://scripts/global.gd"
 Main="*res://scripts/main.gd"
 HealthBar="*res://scripts/barre_vie.gd"
 Transition="*res://scenes/transition.tscn"
-global="*res://scripts/global.gd"
 
 [display]
 

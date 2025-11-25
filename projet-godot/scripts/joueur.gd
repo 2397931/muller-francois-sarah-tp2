@@ -22,6 +22,9 @@ var is_walking_sound_playing := false
 var is_attacking := false
 var screen_size : Vector2
 
+func player():
+	pass
+
 func _ready() -> void:
 	cam = $Camera2D
 	screen_size = get_viewport_rect().size
