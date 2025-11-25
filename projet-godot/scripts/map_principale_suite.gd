@@ -12,11 +12,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	change_scene()
 
-
 func _on_arriere_body_entered(body: Node2D) -> void:
 	if body.has_method("player"):
 		global.transition_scene = true
-
 
 func _on_arriere_body_exited(body: Node2D) -> void:
 	if body.has_method("player"):
@@ -25,6 +23,6 @@ func _on_arriere_body_exited(body: Node2D) -> void:
 func change_scene():
 	if global.transition_scene == true:
 		if global.current_scene == "map_principale_suite":
-			get_tree().change_scene_to("res://scenes/map_principale.tscn")
+			get_tree().change_scene_to_file("res://scenes/map_principale.tscn")
 			global.game_first_loadin = false
 			global.finish_changescenes()
