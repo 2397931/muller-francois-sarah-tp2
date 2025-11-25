@@ -2,26 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<<< HEAD:projet-godot/assets/Card.png.import
-uid="uid://bnxqw6dpmlrlc"
-path="res://.godot/imported/Card.png-9b47923b5180e8160ec24f54b37b28ae.ctex"
-========
-uid="uid://diabqdyys0pr4"
+uid="uid://c4eepbey858pl"
 path="res://.godot/imported/key.png-2c51528f799d068b1afb5363f7bcc43a.ctex"
->>>>>>>> b78e705f2abc77bfa4f2473080262505f7f04f9e:projet-godot/icons/key.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<<< HEAD:projet-godot/assets/Card.png.import
-source_file="res://assets/Card.png"
-dest_files=["res://.godot/imported/Card.png-9b47923b5180e8160ec24f54b37b28ae.ctex"]
-========
 source_file="res://icons/key.png"
 dest_files=["res://.godot/imported/key.png-2c51528f799d068b1afb5363f7bcc43a.ctex"]
->>>>>>>> b78e705f2abc77bfa4f2473080262505f7f04f9e:projet-godot/icons/key.png.import
 
 [params]
 

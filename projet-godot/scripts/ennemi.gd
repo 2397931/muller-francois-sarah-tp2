@@ -3,34 +3,30 @@ extends CharacterBody2D
 @export var speed := 100
 @export var attaque_distance := 50.0
 @export var max_hits := 4
-@export var attaque_cooldown := 1.2   # Slightly slower attacks
+@export var attaque_cooldown := 1.0
 @export var patrol_interval := 2.0
 @export var damage_amount := 1
 
 @onready var son_attaque = $AudioStreamPlayer2D
 @onready var mort = $AudioStreamPlayer2D2
+@onready var anim = $AnimatedSprite2D
 
 var joueur: Node2D
 var hits_taken := 0
 var is_dead := false
 var is_joueur_in_range := false
 var is_taking_damage := false
+var attacking_loop_running := false
 
 var patrol_direction := 0
 var patrol_timer := 0.0
-var attacking_loop_running := false
-
 var min_x := 0
-var max_x := 1024
+var max_x := 3835
 
 func _ready() -> void:
 	joueur = get_tree().get_first_node_in_group("joueur")
-	$AnimatedSprite2D.play("walk")
+	anim.play("walk")
 	randomize()
-	
-	min_x = 0
-	max_x = 3835
-
 
 func _physics_process(delta):
 	if is_dead or joueur == null:
@@ -43,9 +39,9 @@ func _physics_process(delta):
 		if distance > attaque_distance:
 			velocity = direction.normalized() * speed
 			move_and_slide()
-			if not is_taking_damage and $AnimatedSprite2D.animation != "attaque":
-				$AnimatedSprite2D.play("walk")
-			$AnimatedSprite2D.flip_h = direction.x < 0
+			if not is_taking_damage and anim.animation != "attaque":
+				anim.play("walk")
+			anim.flip_h = direction.x < 0
 		else:
 			velocity = Vector2.ZERO
 			move_and_slide()
@@ -56,7 +52,6 @@ func _physics_process(delta):
 
 	global_position.x = clamp(global_position.x, min_x, max_x)
 
-
 func start_attacking_loop():
 	attacking_loop_running = true
 	while is_joueur_in_range and not is_dead and not is_taking_damage:
@@ -64,22 +59,18 @@ func start_attacking_loop():
 		await get_tree().create_timer(attaque_cooldown).timeout
 	attacking_loop_running = false
 
-
 func attaque():
-	$AnimatedSprite2D.play("attaque")
-	$AnimatedSprite2D.flip_h = joueur.global_position.x < global_position.x
+	anim.play("attaque")
 	son_attaque.play()
 
-	# ----- NEW: respect player's invulnerability -----
 	if joueur != null and joueur.has_method("take_damage"):
 		if not joueur.is_invulnerable:
 			joueur.take_damage(damage_amount)
 
-	await $AnimatedSprite2D.animation_finished
+	await anim.animation_finished
 
 	if not is_dead and not is_taking_damage:
-		$AnimatedSprite2D.play("walk")
-
+		anim.play("walk")
 
 func take_hit():
 	if is_dead or is_taking_damage:
@@ -89,31 +80,28 @@ func take_hit():
 	hits_taken += 1
 	print("Ennemi touché ! Total =", hits_taken)
 
-	# ----- NEW: enemy knockback -----
 	var dir = sign(global_position.x - joueur.global_position.x)
 	velocity.x = dir * 150
 	velocity.y = -100
 
-	$AnimatedSprite2D.play("damage")
-	await $AnimatedSprite2D.animation_finished
+	anim.play("damage")
+	await anim.animation_finished
 
 	if hits_taken >= max_hits:
 		die()
 	else:
 		is_taking_damage = false
-		$AnimatedSprite2D.play("walk")
+		anim.play("walk")
 		if is_joueur_in_range and not attacking_loop_running:
 			start_attacking_loop()
-
 
 func die():
 	is_dead = true
 	velocity = Vector2.ZERO
-	$AnimatedSprite2D.play("death")
+	anim.play("death")
 	mort.play()
-	await $AnimatedSprite2D.animation_finished
+	await anim.animation_finished
 	queue_free()
-
 
 func patrol(delta):
 	patrol_timer -= delta
@@ -124,22 +112,15 @@ func patrol(delta):
 	velocity = Vector2(patrol_direction * speed, 0)
 	move_and_slide()
 
-	if global_position.x <= min_x:
-		patrol_direction = 1
-	elif global_position.x >= max_x:
-		patrol_direction = -1
-
-	if not is_taking_damage and $AnimatedSprite2D.animation != "attaque":
-		$AnimatedSprite2D.play("walk")
+	if not is_taking_damage and anim.animation != "attaque":
+		anim.play("walk")
 
 	if patrol_direction != 0:
-		$AnimatedSprite2D.flip_h = patrol_direction < 0
-
+		anim.flip_h = patrol_direction < 0
 
 func _on_detection_area_body_entered(body):
 	if body.is_in_group("joueur"):
 		is_joueur_in_range = true
-
 
 func _on_detection_area_body_exited(body):
 	if body.is_in_group("joueur"):
