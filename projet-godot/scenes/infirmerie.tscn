@@ -1,6 +1,7 @@
-[gd_scene load_steps=64 format=4 uid="uid://c2mio60weh83x"]
+[gd_scene load_steps=67 format=4 uid="uid://c2mio60weh83x"]
 
 [ext_resource type="Texture2D" uid="uid://o5gsepigjxrs" path="res://assets/Walls.png" id="1_1k3m2"]
+[ext_resource type="Script" uid="uid://bb6lwi8hvi8pg" path="res://scripts/infirmerie.gd" id="1_xyff2"]
 [ext_resource type="Texture2D" uid="uid://dem11lq2ix8ub" path="res://assets/ScifiTilemap_64x64_v3.png" id="2_btngi"]
 [ext_resource type="Texture2D" uid="uid://bnot6an618du8" path="res://assets/Tiles.png" id="3_m081x"]
 [ext_resource type="Texture2D" uid="uid://bxgq13kn6llp" path="res://assets/Floor.png" id="4_btngi"]
@@ -21,6 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://bhjutrrx3pkf2" path="res://assets/energy_bench_anim.png" id="19_756v8"]
 [ext_resource type="Texture2D" uid="uid://c2ptjmup38lks" path="res://assets/AnimatedWindow.png" id="20_7m2b0"]
 [ext_resource type="Script" uid="uid://bj6c5x4xcy3tc" path="res://scripts/window.gd" id="21_xyff2"]
+[ext_resource type="PackedScene" uid="uid://cvi8lhd68bq0p" path="res://scenes/menu.tscn" id="23_uwt7b"]
+[ext_resource type="PackedScene" uid="uid://c34gecy2ufov0" path="res://scenes/barre_vie.tscn" id="24_g64cb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g8y7m"]
 texture = ExtResource("1_1k3m2")
@@ -3924,35 +3927,6 @@ sources/3 = SubResource("TileSetAtlasSource_e0e7u")
 sources/4 = SubResource("TileSetAtlasSource_srr8t")
 sources/5 = SubResource("TileSetAtlasSource_ak04l")
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_g64cb"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("12_ak04l")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_756v8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_3baxk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_7m2b0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_xyff2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_x4eqp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_uwt7b")
-}],
-"loop": true,
-"name": &"door",
-"speed": 5.0
-}]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_c4xvs"]
 atlas = ExtResource("18_ak04l")
 region = Rect2(0, 0, 32, 48)
@@ -4060,6 +4034,35 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_g64cb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_ak04l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_756v8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_3baxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_7m2b0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_xyff2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_x4eqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_uwt7b")
+}],
+"loop": true,
+"name": &"door",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ak04l"]
 size = Vector2(223.25, 196.5)
 
@@ -4129,6 +4132,7 @@ animations = [{
 
 [node name="infirmerie" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_xyff2")
 
 [node name="arriere_plan2" type="TileMapLayer" parent="."]
 scale = Vector2(3, 3)
@@ -4166,17 +4170,6 @@ scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAAmABEAAAAMABAAAAAnABIAAAALABAAAAAlABEAAAAKABAAAAAkABEAAAALAA8AAAAjABEAAAALABEAAAAUABEAAAAKAA4AAAAEABEAAAALAA4AAAA=")
 tile_set = SubResource("TileSet_5vcon")
 
-[node name="Carte_rouge" parent="." instance=ExtResource("8_6fj2q")]
-position = Vector2(1636, 866)
-scale = Vector2(2.00109, 2)
-
-[node name="Door" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-position = Vector2(483, 901)
-scale = Vector2(5, 5)
-sprite_frames = SubResource("SpriteFrames_g64cb")
-animation = &"door"
-
 [node name="tank" type="AnimatedSprite2D" parent="."]
 position = Vector2(1413, 874)
 scale = Vector2(4, 4)
@@ -4190,21 +4183,17 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_3baxk")
 autoplay = "default"
 
-[node name="joueur" parent="." instance=ExtResource("11_20ln6")]
-position = Vector2(417, 931)
-scale = Vector2(4, 4)
-
-[node name="Camera2D" type="Camera2D" parent="joueur"]
-zoom = Vector2(2, 2)
-limit_left = 0
-limit_top = 0
-limit_right = 1920
-limit_bottom = 1080
-
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(478, 904)
 script = ExtResource("19_3baxk")
 dest_scene = "uid://bwtawvga1pjkn"
+
+[node name="Door" type="AnimatedSprite2D" parent="Area2D"]
+texture_filter = 1
+position = Vector2(5, -3)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_g64cb")
+animation = &"door"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -2)
@@ -4216,6 +4205,29 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_tad5i")
 animation = &"window"
 script = ExtResource("21_xyff2")
+
+[node name="joueur" parent="." instance=ExtResource("11_20ln6")]
+position = Vector2(417, 931)
+scale = Vector2(4, 4)
+
+[node name="Camera2D" type="Camera2D" parent="joueur"]
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 1920
+limit_bottom = 1080
+
+[node name="red_card" parent="." instance=ExtResource("8_6fj2q")]
+position = Vector2(1606, 870)
+
+[node name="menu" parent="." instance=ExtResource("23_uwt7b")]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="barre_vie" parent="HUD" instance=ExtResource("24_g64cb")]
+position = Vector2(95, 40)
+scale = Vector2(3, 3)
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

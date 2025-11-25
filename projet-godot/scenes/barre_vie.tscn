@@ -39,6 +39,13 @@ animations = [{
 
 [node name="barre_vie" type="Node2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+offset = Vector2(35, 15)
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 35, 15)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
+texture_filter = 1
+position = Vector2(19.6667, 7)
 sprite_frames = SubResource("SpriteFrames_y7321")
 animation = &"pert_vie"

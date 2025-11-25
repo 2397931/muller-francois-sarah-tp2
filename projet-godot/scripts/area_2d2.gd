@@ -1,7 +1,13 @@
 extends Area2D
 
+
 @export_file var dest_scene
+@export var required_card:String = "card_red"
+@onready var anim = $Door
 var entered = false
+
+func _ready() -> void:
+	pass
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("player"):

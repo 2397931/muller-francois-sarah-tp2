@@ -1,5 +1,4 @@
 extends CharacterBody2D
-
 class_name Joueur
 
 @export var speed := 400
@@ -7,7 +6,7 @@ class_name Joueur
 @export var gravity := 1200
 @export var max_health := 6
 @export var damage_per_hit := 1
-@export var invulnerability_time := 0.8   # Increased so enemies can't spam you
+@export var invulnerability_time := 0.8
 
 @onready var marche_metal = $AudioStreamPlayer2D
 @onready var son_saut = $AudioStreamPlayer2D2
@@ -16,8 +15,6 @@ class_name Joueur
 @onready var death = $AudioStreamPlayer2D5
 
 var cam : Camera2D
-@onready var health_bar_sprite: AnimatedSprite2D = get_node("/root/main/HUD/barre_vie/AnimatedSprite2D")
-
 var current_health := max_health
 var is_invulnerable := false
 var is_taking_damage := false
@@ -29,23 +26,13 @@ func _ready() -> void:
 	cam = $Camera2D
 	screen_size = get_viewport_rect().size
 	$AnimatedSprite2D.play("idle")
-	update_health_bar()
 	
-	# Respawn at checkpoint if it exists
-	#if CheckpointManager.last_location != Vector2.ZERO:
-		#global_position = CheckpointManager.last_location
+	# Sync health bar at start
+	HealthBar.update_health(current_health)
 
 	is_invulnerable = true
 	await get_tree().create_timer(1.0).timeout
 	is_invulnerable = false
-
-
-func update_health_bar():
-	if health_bar_sprite:
-		health_bar_sprite.frame = max_health - current_health
-
-func player():
-	pass
 
 func take_damage(amount):
 	if is_invulnerable or current_health <= 0:
@@ -56,14 +43,16 @@ func take_damage(amount):
 
 	print("Player took damage! Health =", current_health)
 
-	# ----- NEW: knockback -----
+	# Update global health bar
+	HealthBar.update_health(current_health)
+
+	# Knockback
 	var enemy = get_tree().get_first_node_in_group("ennemi")
 	if enemy:
 		var dir = sign(global_position.x - enemy.global_position.x)
 		velocity = Vector2(dir * 200, -150)
 
 	$AnimatedSprite2D.play("damage")
-	update_health_bar()
 	hurt.play()
 
 	is_taking_damage = true
@@ -75,18 +64,15 @@ func take_damage(amount):
 	if current_health <= 0:
 		die()
 
-
 func die():
 	set_process(false)
 	set_physics_process(false)
-
 	$AnimatedSprite2D.play("death")
 	death.play()
-
 	await $AnimatedSprite2D.animation_finished
 	get_tree().reload_current_scene()
 
-
+# ----- Physics & movement (unchanged) -----
 func _physics_process(delta):
 	if Input.is_action_pressed("move_right"):
 		velocity.x = speed
@@ -107,7 +93,6 @@ func _physics_process(delta):
 	if velocity.x != 0:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 
-	# animations
 	if is_taking_damage:
 		pass
 	elif is_attacking:
@@ -131,17 +116,14 @@ func _physics_process(delta):
 		position.x = clamp(position.x, cam.limit_left, cam.limit_right)
 		position.y = clamp(position.y, cam.limit_top, cam.limit_bottom)
 
-	# ----- Attack -----
 	if Input.is_action_just_pressed("attaque_joueur"):
 		attaque()
 		sword.play()
-
 
 func attaque():
 	is_attacking = true
 	$AnimatedSprite2D.play("attaque")
 
-	# ----- NEW: attack active frame -----
 	await get_tree().create_timer(0.15).timeout
 
 	var bodies = $Area2D.get_overlapping_bodies()

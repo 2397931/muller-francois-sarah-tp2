@@ -26,10 +26,12 @@ metadata/_edit_use_anchors_ = true
 [node name="map_principale" parent="." instance=ExtResource("1_jyhfs")]
 
 [node name="HUD" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="barre_vie" parent="HUD" instance=ExtResource("6_tefeu")]
-position = Vector2(77, 39)
-scale = Vector2(2, 2)
+visible = false
+position = Vector2(95, 40)
+scale = Vector2(3, 3)
 script = ExtResource("7_o6xl0")
 
 [node name="menu" parent="." instance=ExtResource("6_choun")]

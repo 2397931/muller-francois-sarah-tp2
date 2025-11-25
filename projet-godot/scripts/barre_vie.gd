@@ -1,20 +1,14 @@
-extends Node2D
+extends Node
 
 @export var max_health := 6
 var current_health := max_health
+var heart_sprite: AnimatedSprite2D = null
 
-@onready var heart_sprite := $AnimatedSprite2D
+func set_heart_sprite(node: AnimatedSprite2D) -> void:
+	heart_sprite = node
+	update_health(current_health)
 
-func _ready():
-	if heart_sprite == null:
-		push_error("barre_vie not found! Check node path.")
-	else:
-		print("✅ barre_vie found")
-
-# Update the hearts based on the player's health
-func update_health(new_health: int):
-	if heart_sprite == null:
-		return
+func update_health(new_health: int) -> void:
 	current_health = clamp(new_health, 0, max_health)
-	# Example: if max = 6 and current = 4 → frame = 2
-	heart_sprite.frame = max_health - current_health
+	if heart_sprite:
+		heart_sprite.frame = max_health - current_health
