@@ -1,8 +1,9 @@
-[gd_scene load_steps=30 format=4 uid="uid://m4g0jcl2xmt3"]
+[gd_scene load_steps=31 format=4 uid="uid://m4g0jcl2xmt3"]
 
 [ext_resource type="Texture2D" uid="uid://bnot6an618du8" path="res://assets/Tiles.png" id="1_gt4m6"]
 [ext_resource type="Script" uid="uid://hpvn2q4j4nm3" path="res://scripts/map_principale.gd" id="1_kx8oq"]
 [ext_resource type="Texture2D" uid="uid://gg08whe6hald" path="res://assets/tiles_dark.png" id="2_7t5li"]
+[ext_resource type="VideoStream" uid="uid://dwniagr464mqq" path="res://video/arriere_plan.ogv" id="2_kx8oq"]
 [ext_resource type="Texture2D" uid="uid://bx1hrtd0hfykm" path="res://assets/tiles_darker.png" id="3_pg3y2"]
 [ext_resource type="Texture2D" uid="uid://ij1x0ci7hc0w" path="res://assets/Pointer1.png" id="3_wpggv"]
 [ext_resource type="Texture2D" uid="uid://dep5434i556f0" path="res://assets/Pointer2.png" id="4_mgex8"]
@@ -1319,6 +1320,15 @@ size = Vector2(43, 181)
 
 [node name="map_principale" type="Node2D"]
 script = ExtResource("1_kx8oq")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+z_index = -4
+offset_right = 1920.0
+offset_bottom = 1080.0
+stream = ExtResource("2_kx8oq")
+autoplay = true
+loop = true
+metadata/_edit_use_anchors_ = true
 
 [node name="objet_non_interactif" type="TileMapLayer" parent="."]
 texture_filter = 1

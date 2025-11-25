@@ -119,7 +119,7 @@ volume_db = -8.0
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_70i5f")
-volume_db = -12.0
+volume_db = -5.441
 
 [connection signal="pressed" from="PauseMenu/ShowInstructions" to="." method="_on_show_instructions_pressed"]
 [connection signal="pressed" from="PauseMenu/ContinueButton" to="." method="_on_continue_button_pressed"]

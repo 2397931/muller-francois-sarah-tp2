@@ -21,6 +21,7 @@ func pauser() -> void:
 	print("PAUSE MODE")
 	$PauseMenu.show()
 	entrer.play()
+	menu_music.play()
 	get_tree().paused = true
 	$PauseMenu/ShowInstructions.grab_focus.call_deferred()
 

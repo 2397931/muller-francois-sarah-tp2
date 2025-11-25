@@ -38,7 +38,6 @@ func take_damage(amount):
 	if is_invulnerable or global.current_health <= 0:
 		return
 
-	# Apply damage to global health
 	global.damage(amount)
 	print("Player took damage! Health =", global.current_health)
 
@@ -53,6 +52,7 @@ func take_damage(amount):
 
 	if global.current_health <= 0:
 		die()
+
 
 func die():
 	set_process(false)

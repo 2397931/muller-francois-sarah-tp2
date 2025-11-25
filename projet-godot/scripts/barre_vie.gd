@@ -1,4 +1,3 @@
-
 extends Node2D
 
 @export var max_health := 6
@@ -11,10 +10,9 @@ func _ready():
 	if heart_sprite:
 		heart_sprite.stop()
 
-	# Listen to global health changes
+	# Connect once — works across all scenes
 	global.health_changed.connect(update_health)
 
-	# Initialize UI
 	update_health(global.current_health)
 
 func update_health(new_health: int) -> void:

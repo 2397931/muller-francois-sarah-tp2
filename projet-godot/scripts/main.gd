@@ -5,6 +5,5 @@ signal card_collected(card)
 func collect_card(card):
 	emit_signal("card_collected", card)
 
-#func _ready() -> void:
-#	musique_arriere.play()
-#	bruit_spaceship.play()
+func _ready() -> void:
+	GlobalAudio.get_node("AudioStreamPlayer").play()

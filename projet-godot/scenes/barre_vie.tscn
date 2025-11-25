@@ -1,5 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c34gecy2ufov0"]
+[gd_scene load_steps=11 format=3 uid="uid://c34gecy2ufov0"]
 
+[ext_resource type="Script" uid="uid://c3yl54780md28" path="res://scripts/canvas_layer.gd" id="1_7r8f0"]
+[ext_resource type="Script" uid="uid://bgbx1wy6gm35i" path="res://scripts/barre_vie.gd" id="1_r3jmm"]
 [ext_resource type="Texture2D" uid="uid://cli0wjb4bn3kk" path="res://assets/6.png" id="1_w5rqn"]
 [ext_resource type="Texture2D" uid="uid://b71enpavq3el" path="res://assets/5.png" id="2_7r8f0"]
 [ext_resource type="Texture2D" uid="uid://b3coqrlhpuoul" path="res://assets/4.png" id="3_r3jmm"]
@@ -38,11 +40,13 @@ animations = [{
 }]
 
 [node name="barre_vie" type="Node2D"]
+script = ExtResource("1_r3jmm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 offset = Vector2(35, 15)
 scale = Vector2(3, 3)
 transform = Transform2D(3, 0, 0, 3, 35, 15)
+script = ExtResource("1_7r8f0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
 texture_filter = 1

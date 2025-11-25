@@ -1,53 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://boxe42bod85e5"]
+[gd_scene load_steps=4 format=3 uid="uid://boxe42bod85e5"]
 
 [ext_resource type="Script" uid="uid://c1dideemsx4hb" path="res://scripts/main.gd" id="1_85g3d"]
 [ext_resource type="PackedScene" uid="uid://m4g0jcl2xmt3" path="res://scenes/map_principale.tscn" id="1_jyhfs"]
-[ext_resource type="VideoStream" uid="uid://dwniagr464mqq" path="res://video/arriere_plan.ogv" id="2_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://cvi8lhd68bq0p" path="res://scenes/menu.tscn" id="6_choun"]
-[ext_resource type="PackedScene" uid="uid://c34gecy2ufov0" path="res://scenes/barre_vie.tscn" id="6_tefeu"]
-[ext_resource type="Script" uid="uid://bgbx1wy6gm35i" path="res://scripts/barre_vie.gd" id="7_o6xl0"]
-[ext_resource type="AudioStream" uid="uid://cthev4yqi2htj" path="res://audio/unidentified-208890.mp3" id="9_choun"]
-[ext_resource type="AudioStream" uid="uid://bi4eox6skjrj0" path="res://audio/space-travellinx27-low-rumble-295793.mp3" id="10_choun"]
-[ext_resource type="AudioStream" uid="uid://qdirw4f5xmai" path="res://audio/switch_005.ogg" id="13_a8y0u"]
-[ext_resource type="AudioStream" uid="uid://1exsgtm7mfav" path="res://audio/minimize_008.ogg" id="14_jkv2x"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_85g3d")
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-z_index = -3
-offset_right = 1920.0
-offset_bottom = 1080.0
-stream = ExtResource("2_a8y0u")
-autoplay = true
-loop = true
-metadata/_edit_use_anchors_ = true
-
 [node name="map_principale" parent="." instance=ExtResource("1_jyhfs")]
 
-[node name="HUD" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="barre_vie" parent="HUD" instance=ExtResource("6_tefeu")]
-visible = false
-position = Vector2(95, 40)
-scale = Vector2(3, 3)
-script = ExtResource("7_o6xl0")
-
 [node name="menu" parent="." instance=ExtResource("6_choun")]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_choun")
-volume_db = -30.0
-autoplay = true
-
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_choun")
-volume_db = -30.0
-autoplay = true
-
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_a8y0u")
-
-[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_jkv2x")
