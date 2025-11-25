@@ -4206,6 +4206,9 @@ sprite_frames = SubResource("SpriteFrames_tad5i")
 animation = &"window"
 script = ExtResource("21_xyff2")
 
+[node name="red_card" parent="." instance=ExtResource("8_6fj2q")]
+position = Vector2(1606, 870)
+
 [node name="joueur" parent="." instance=ExtResource("11_20ln6")]
 position = Vector2(417, 931)
 scale = Vector2(4, 4)
@@ -4216,9 +4219,6 @@ limit_left = 0
 limit_top = 0
 limit_right = 1920
 limit_bottom = 1080
-
-[node name="red_card" parent="." instance=ExtResource("8_6fj2q")]
-position = Vector2(1606, 870)
 
 [node name="menu" parent="." instance=ExtResource("23_uwt7b")]
 

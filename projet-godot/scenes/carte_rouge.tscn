@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dtm5e0xb02oei"]
+[gd_scene load_steps=14 format=3 uid="uid://dtm5e0xb02oei"]
 
 [ext_resource type="Script" uid="uid://hhkuuhohdsqs" path="res://scripts/carte_rouge.gd" id="1_bj0x5"]
 [ext_resource type="Texture2D" uid="uid://gb1dlh7f6l2g" path="res://assets/red_card.png" id="1_km0b6"]
+[ext_resource type="AudioStream" uid="uid://cdnhqbcq5phdv" path="res://audio/item-equip-6904.mp3" id="3_scbut"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_scbut"]
 atlas = ExtResource("1_km0b6")
@@ -83,5 +84,8 @@ animation = &"card"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_fojb8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_scbut")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

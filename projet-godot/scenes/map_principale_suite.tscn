@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://bwtawvga1pjkn"]
+[gd_scene load_steps=44 format=4 uid="uid://bwtawvga1pjkn"]
 
 [ext_resource type="Script" uid="uid://bn8vsp7fhp238" path="res://scripts/map_principale_suite.gd" id="1_5aakh"]
 [ext_resource type="Texture2D" uid="uid://bnot6an618du8" path="res://assets/Tiles.png" id="1_he8fs"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://bggi0j3l7d3x5" path="res://scenes/door.tscn" id="24_hqclp"]
 [ext_resource type="PackedScene" uid="uid://cvi8lhd68bq0p" path="res://scenes/menu.tscn" id="25_4unyu"]
 [ext_resource type="PackedScene" uid="uid://c34gecy2ufov0" path="res://scenes/barre_vie.tscn" id="26_1uq11"]
+[ext_resource type="VideoStream" uid="uid://dwniagr464mqq" path="res://video/arriere_plan.ogv" id="27_1uq11"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wx3ok"]
 texture = ExtResource("1_he8fs")
@@ -1363,6 +1364,15 @@ size = Vector2(25, 398)
 
 [node name="map_principale_suite" type="Node2D"]
 script = ExtResource("1_5aakh")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+z_index = -4
+texture_filter = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+stream = ExtResource("27_1uq11")
+autoplay = true
+loop = true
 
 [node name="red_card" parent="." instance=ExtResource("24_hqclp")]
 position = Vector2(1343, 913)
