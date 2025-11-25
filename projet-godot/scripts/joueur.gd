@@ -4,7 +4,6 @@ class_name Joueur
 @export var speed := 400
 @export var jump_force := -500
 @export var gravity := 1200
-@export var max_health := 6
 @export var damage_per_hit := 1
 @export var invulnerability_time := 0.8
 
@@ -15,7 +14,6 @@ class_name Joueur
 @onready var death = $AudioStreamPlayer2D5
 
 var cam : Camera2D
-var current_health := max_health
 var is_invulnerable := false
 var is_taking_damage := false
 var is_walking_sound_playing := false
@@ -29,31 +27,20 @@ func _ready() -> void:
 	cam = $Camera2D
 	screen_size = get_viewport_rect().size
 	$AnimatedSprite2D.play("idle")
-	
-	# Sync health bar at start
-	HealthBar.update_health(current_health)
+
+	# No more HealthBar.update_health — UI listens to global
 
 	is_invulnerable = true
 	await get_tree().create_timer(1.0).timeout
 	is_invulnerable = false
 
 func take_damage(amount):
-	if is_invulnerable or current_health <= 0:
+	if is_invulnerable or global.current_health <= 0:
 		return
 
-	current_health -= amount
-	current_health = clamp(current_health, 0, max_health)
-
-	print("Player took damage! Health =", current_health)
-
-	# Update global health bar
-	HealthBar.update_health(current_health)
-
-	# Knockback
-	var enemy = get_tree().get_first_node_in_group("ennemi")
-	if enemy:
-		var dir = sign(global_position.x - enemy.global_position.x)
-		velocity = Vector2(dir * 200, -150)
+	# Apply damage to global health
+	global.damage(amount)
+	print("Player took damage! Health =", global.current_health)
 
 	$AnimatedSprite2D.play("damage")
 	hurt.play()
@@ -64,7 +51,7 @@ func take_damage(amount):
 	is_invulnerable = false
 	is_taking_damage = false
 
-	if current_health <= 0:
+	if global.current_health <= 0:
 		die()
 
 func die():
@@ -74,6 +61,8 @@ func die():
 	death.play()
 	await $AnimatedSprite2D.animation_finished
 	get_tree().reload_current_scene()
+
+
 
 # ----- Physics & movement (unchanged) -----
 func _physics_process(delta):
